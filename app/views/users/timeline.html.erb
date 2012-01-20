@@ -1,0 +1,16 @@
+<%= link_to "home", users_path %><br/>
+
+Hallo <%= "#{@user.first_name}"%><br/><br/>
+
+<div>
+<h2>Stream:</h2>
+  <% @user.following.each do |follow| %>
+    <% follow.messages.reverse!.each do |messages| %>
+      <div class = "item">
+      <span class="user"><%= messages.user.first_name %>
+      <%= messages.user.last_name %>:</span>
+        <%= messages.content %><br/>
+      </div>
+    <% end %>
+  <% end %>
+</div>

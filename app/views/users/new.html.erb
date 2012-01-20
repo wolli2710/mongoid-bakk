@@ -1,0 +1,6 @@
+<%= form_for(@user, :url => {:action => :create}, :html => {:method => :post} ) do |f| %>
+  first name<%= f.text_field :first_name %><br>
+  last name<%= f.text_field :last_name %><br>
+  email<%= f.text_field :e_mail %><br>
+  <%= f.submit :create %>
+<% end %>

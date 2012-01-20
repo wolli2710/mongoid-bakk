@@ -1,0 +1,6 @@
+<%= form_for(@message, :url => {:action => :create}, :html => {:method => :post} ) do |f| %>
+  content <%= f.text_area :content %><br/>
+  user id <%= f.select :user_id, (1..User.count), {:include_blank => "Select user id"} %><br/><br/>
+
+  <%= f.submit :create %>
+<% end %>

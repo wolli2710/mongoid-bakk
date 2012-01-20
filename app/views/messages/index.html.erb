@@ -1,0 +1,17 @@
+<h1>User List:</h1>
+<div id="links">
+  <%= link_to "home", users_path %><br/>
+  <%= link_to "new message", new_message_path %><br/>
+  <%= link_to "delete messages", delete_messages_path, :action => :delete_messages %><br/><br/>
+</div>
+
+<% unless @messages == nil %>
+  <% @messages.each do |f| %>
+    <div class = "item">
+      <div class="image"><%= image_tag(Image.get_gravatar f.user.e_mail)%></div>
+      <%= link_to "#{f.user.last_name}", user_path(:id => f.user.uid) %>
+      <%= f.content %><br/>
+      <%= link_to "delete message", message_path(f.id), :method => :delete %><br/>
+    </div>
+  <% end %><br/><br/>
+<% end %>

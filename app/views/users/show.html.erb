@@ -1,0 +1,20 @@
+<div class="item">
+  <div class="image"><%= image_tag(Image.get_gravatar @user.e_mail)%></div>
+  <%= "Userprofil von: #{@user.first_name} #{@user.last_name}" %>
+</div><br/>
+
+<%= link_to "go to timeline", timeline_path(:id => @user.uid) %>
+<div class="wrapper">
+  <%= "Follower ids:" %>
+  <% @user.followers.each do |follower| %>
+    <%= follower.uid %>
+  <% end %><br/><br/>
+
+  <%= "Your last messages:" %><br/>
+  <% @user.messages.reverse!.each do |m| %>
+    <div class="item">
+      <div class="image"><%= image_tag(Image.get_gravatar @user.e_mail)%></div>
+      <%= m.content %>
+    </div>
+  <% end %>
+</div>
