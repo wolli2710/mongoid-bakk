@@ -5,19 +5,11 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new
   end
 
   def create
-    user = User.create_new_user params[:user][:first_name], params[:user][:last_name],
-                      params[:user][:e_mail]
-    if user.valid?
-      flash[:message] = "New user created"
-      redirect_to users_path
-    else
-      flash[:warning] = "Failed to save user"
-      redirect_to new_user_path
-    end
+    user = User.create_new_user params[:first_name], params[:last_name], params[:e_mail]
+    redirect_to users_path
   end
 
   def show

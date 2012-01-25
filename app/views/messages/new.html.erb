@@ -1,6 +1,7 @@
-<%= form_for(@message, :url => {:action => :create}, :html => {:method => :post} ) do |f| %>
-  content <%= f.text_area :content %><br/>
-  user id <%= f.select :user_id, (1..User.count), {:include_blank => "Select user id"} %><br/><br/>
+<h1>Create new Message</h1>
 
-  <%= f.submit :create %>
-<% end %>
+<%= form_tag('/messages') do %>
+  <%= text_field_tag 'uid', :uid %>
+  <%= text_field_tag 'content', :content %>
+  <%= submit_tag 'submit' %>
+<%end%>

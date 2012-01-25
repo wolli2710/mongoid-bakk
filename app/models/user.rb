@@ -19,7 +19,6 @@ class User
     self.following.delete(user)
   end
 
-
   def self.generate_user_id
     self.count + 1
   end
@@ -30,15 +29,6 @@ class User
 
   def self.create_new_user first_name, last_name, e_mail
    self.create(uid: self.generate_user_id.to_s, first_name: first_name, last_name: last_name, e_mail: e_mail)
-  end
-
-  def self.create_users
-    (1..1000).each do |f|
-      user = self.new(uid: f.to_s, first_name: "first_name", last_name: "last_name", e_mail: "e_mail")
-      user.save!
-      puts f
-      puts user.uid
-    end
   end
 
   def self.delete_user(uid)
@@ -55,8 +45,6 @@ class User
   field :last_name, :type => String
   field :e_mail, :type => String
   field :messages, :type => String
-
-  #index :uid, unique: true
 
   attr_accessible :uid, :first_name, :last_name, :e_mail
   validates_presence_of :uid, :first_name, :last_name, :e_mail
